@@ -7,6 +7,10 @@ const provider = new RpcProvider({ nodeUrl: RPC_URL });
 const [originalPrivateKey] = await loadFromFile("original-private-key.txt");
 const [newPrivateKey] = await loadFromFile("new-private-key.txt");
 
+if (!originalPrivateKey || !newPrivateKey) {
+  throw new Error("Заполните файлы с ключами");
+}
+
 const address = getArgentXAddress(originalPrivateKey);
 // нужно заменить на конкретный адрес, если менять у аккаунта, у которого ранее меняли владельца
 // const address = "0x0041ae75046c337fcf4b3254bd886771f333fd841032e90bd7376150bd5ad67f"
